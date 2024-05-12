@@ -64,18 +64,6 @@ class ShowNoteActivity : AppCompatActivity() {
             }else
                startMainActivity()
         }
-        binding.btnShare.setOnClickListener{
-            val shareIntent = Intent.createChooser(Intent().apply {
-                this.action=Intent.ACTION_SEND
-                this.putExtra(Intent.EXTRA_TEXT, "My Note: \nTitle: ${binding.txtTitle.text} \nDescription: ${binding.txtDescription.text}")
-                this.type = "text/plain"
-                // (Optional) Here we're setting the title of the content
-                this.putExtra(Intent.EXTRA_TITLE, "${binding.txtTitle.text}")
-
-            }, null)
-            startActivity(shareIntent)
-
-        }
 
     }
 

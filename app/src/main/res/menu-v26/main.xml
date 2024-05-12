@@ -9,11 +9,11 @@
         android:iconTint="@color/white"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
-    <item
-        android:id="@+id/mLogOut"
-        android:orderInCategory="0"
-        android:title="@string/log_out"
-        app:showAsAction="never"/>
+<!--    <item-->
+<!--        android:id="@+id/mLogOut"-->
+<!--        android:orderInCategory="0"-->
+<!--        android:title="@string/log_out"-->
+<!--        app:showAsAction="never"/>-->
     <item
         android:id="@+id/mSort"
         app:showAsAction="ifRoom"

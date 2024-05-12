@@ -6,7 +6,7 @@ import android.view.View
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide
 import uz.javokhirjambulov.notes.R
-import uz.javokhirjambulov.notes.login.LoginActivity
+
 
 
 @Suppress("DEPRECATION")
@@ -55,9 +55,7 @@ class MainIntroActivity: IntroActivity() {
                 .layout(R.layout.activity_main_intro)
                 .build()
         )
-        buttonCtaClickListener = View.OnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
-        }
+
 
     }
 }
