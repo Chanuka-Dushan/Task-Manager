@@ -6,181 +6,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/aboutLinerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_baseline_info"
-                app:tint="@color/blue" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:text="@string/about_the_app"
-                android:textSize="15sp"
-                android:textColor="@color/blue"/>
-
-        </LinearLayout>
+        <!-- Developer Photo -->
         <ImageView
-            android:id="@+id/about_application_icon"
+            android:id="@+id/developer_photo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/developer_photo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/aboutLinerLayout" />
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Developer Name -->
         <TextView
-            android:id="@+id/about_application_name"
+            android:id="@+id/developer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:layout_marginTop="16dp"
-            android:text="@string/app_name"
+            android:text="Dushan Chanuka"
             android:textColor="?attr/colorSecondaryVariant"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/about_application_icon" />
+            app:layout_constraintStart_toEndOf="@id/developer_photo"
+            app:layout_constraintTop_toTopOf="@id/developer_photo" />
 
+        <!-- Developer Description -->
         <TextView
-            android:id="@+id/about_application_version"
+            android:id="@+id/developer_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@string/version_1_0_0"
+            android:layout_marginTop="8dp"
+            android:text="SLIIT Undergraduate"
             android:textColor="?attr/colorSecondaryVariant"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/about_application_name" />
+            app:layout_constraintStart_toStartOf="@id/developer_name"
+            app:layout_constraintTop_toBottomOf="@id/developer_name" />
 
-        <TextView
-            android:id="@+id/view_source_code"
-            android:layout_width="match_parent"
+        <!-- View Source Code Button -->
+        <Button
+            android:id="@+id/viewSourceCode"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="16dp"
-            android:text="@string/view_source_code_at_github"
+            android:layout_marginEnd="8dp"
+            android:text="View Source Code"
             android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_application_version" />
+            app:layout_constraintEnd_toStartOf="@id/appIntro"
+            app:layout_constraintTop_toBottomOf="@id/developer_photo" />
 
-        <TextView
-            android:id="@+id/send_feedback"
-            android:layout_width="match_parent"
+        <!-- App Intro Button -->
+        <Button
+            android:id="@+id/appIntro"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="16dp"
-            android:text="@string/send_feedback"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_source_code" />
-
-        <TextView
-            android:id="@+id/app_intro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/app_intro"
             android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/send_feedback" />
-
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#c0c0c0"
-            app:layout_constraintTop_toBottomOf="@id/app_intro" />
-
-        <LinearLayout
-            android:id="@+id/txtCloud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@id/view">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_baseline_cloud"
-            app:tint="@color/blue" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/cloud_backup"
-            android:textColor="@color/blue"
-            android:textSize="15sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/expCloud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/export_from_cloud"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="18sp"
-           app:layout_constraintTop_toBottomOf="@id/txtCloud"/>
-        <TextView
-            android:id="@+id/impCloud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/import_to_cloud"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/expCloud"/>
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#c0c0c0"
-            app:layout_constraintTop_toBottomOf="@id/impCloud" />
-        <TextView
-            android:id="@+id/deleteAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/delete_account"
-            android:textColor="?attr/colorSecondaryVariant"
-            android:textSize="18sp"
-            android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/view1"/>
-
+            app:layout_constraintTop_toBottomOf="@id/developer_photo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

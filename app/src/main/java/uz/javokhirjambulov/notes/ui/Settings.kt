@@ -62,155 +62,20 @@ class Settings : AppCompatActivity() {
             val openGithub = Intent(Intent.ACTION_VIEW, Uri.parse(Constants.sourceCodeURL))
             startActivity(openGithub)
         }
-        binding.sendFeedback.setOnClickListener {
-            val emailIntent = Intent(
-                Intent.ACTION_SENDTO,
-                Uri.parse(String.format(Constants.feedbackURL, getString(R.string.app_name)))
-            )
 
-            startActivity(emailIntent)
-        }
         //initObjects()
 
 
-        binding.expCloud.setOnClickListener {
-            if (!haveNetworkConnection()){
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.no_net_no_upload),
-                    Snackbar.LENGTH_LONG
-                ).show()
-                return@setOnClickListener
-            }
-            else if(auth.currentUser ==null){
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.no_signin_no_upload),
-                    Snackbar.LENGTH_LONG
-                ).show()
 
-            }
-            else {
-                try {
-                    noteViewModel.getAllNotes().observe(this) { lisOfNotes ->
-                    lisOfNotes?.let {
-                        for (i in it) {
-                            if (i.todo == null || i.todo == false) {
-                                val note = Note(i.noteId)
-                                note.title = i.title
-                                note.description = i.description
-                                note.idea = i.idea
-                                note.important = i.important
-                                note.todo = false
-                                noteViewModel.update(note)
-                                myRef.child(auth.currentUser?.uid.toString()).child(i.noteId)
-                                    .setValue(note)
-                            } else {
-                                myRef.child(auth.currentUser?.uid.toString()).child(i.noteId)
-                                    .setValue(i)
-                            }
-                        }
-                    }
-                    }
 
-                deletedNoteViewModel.getAllNotes().observe(this) { lisOfNotes ->
-                    lisOfNotes?.let {
-                            for (i in it) {
-                                if (i.todo == null || i.todo == false) {
-                                    val note = Note(i.noteId)
-                                    note.title = i.title
-                                    note.description = i.description
-                                    note.idea = i.idea
-                                    note.important = i.important
-                                    note.todo = false
-                                    deletedNoteViewModel.update(note)
-                                    myDeletedNotesRef.child(auth.currentUser?.uid.toString())
-                                        .child(i.noteId)
-                                        .setValue(note)
-                                } else {
-                                    myDeletedNotesRef.child(auth.currentUser?.uid.toString())
-                                        .child(i.noteId)
-                                        .setValue(i)
-                                }
 
-                            }
-                    }
-                }
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.uploadedToCloudToast),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }catch (e:Exception){
-                    noteViewModel.setErrorMessage(e.toString())
-                }
-            }
-        }
-        binding.impCloud.setOnClickListener {
-            if (!haveNetworkConnection()){
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.no_net_no_import),
-                    Snackbar.LENGTH_LONG
-                ).show()
-                return@setOnClickListener
-            }
-            else if(auth.currentUser ==null){
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.no_signin_no_import),
-                    Snackbar.LENGTH_LONG
-                ).show()
-
-            }else {
-                try {
-                    implCloud()
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.importedFromCloudToast),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }catch (e:Exception) {
-                    noteViewModel.setErrorMessage(e.toString())
-                }
-            }
-        }
 
         binding.appIntro.setOnClickListener {
             // show app intro
             val i = Intent(this, MainIntroActivity::class.java)
             startActivity(i)
         }
-        binding.deleteAccount.setOnClickListener {
-            if(auth.currentUser ==null){
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.no_signedin_account),
-                    Snackbar.LENGTH_LONG
-                ).show()
-            }
-            else if (auth.currentUser != null) {
-                AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.do_you_want_delete))
-                    .setMessage(getString(R.string.all_notes_will_be_deleted))
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton(
-                        android.R.string.yes
-                    ) { _, _ ->
-                        deleteDatabase()
-                        deleteDeletedDatabase()
-                        deleteAccount()
 
-
-                        // Continue with delete operation
-                    } // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .create()
-                    .show()
-            }
-        }
 
 
 
