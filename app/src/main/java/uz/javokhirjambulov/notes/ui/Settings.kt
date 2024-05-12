@@ -80,39 +80,7 @@ class Settings : AppCompatActivity() {
 
 
     }
-    private fun deleteDatabase() {
-        if (auth.currentUser == null) {
-            Snackbar.make(
-                binding.root,
-                getString(R.string.no_signin_no_upload),
-                Snackbar.LENGTH_LONG
-            ).show()
-        } else{
-            myRef.child(auth.currentUser?.uid.toString()).removeValue()
-                .addOnCompleteListener {
-                    if (it.isComplete) {
-                        Log.i("TAG", "Info deleted from cloud")
-                    }
-                }
-            }
-    }
-    private fun deleteDeletedDatabase(){
-        if(auth.currentUser ==null){
-            Snackbar.make(
-                binding.root,
-                getString(R.string.no_signin_no_upload),
-                Snackbar.LENGTH_LONG
-            ).show()
-        }
-        else {
-            myDeletedNotesRef.child(auth.currentUser?.uid.toString()).removeValue()
-                .addOnCompleteListener {
-                    if (it.isComplete) {
-                        Log.i("TAG", "del Info deleted from cloud")
-                    }
-                }
-        }
-    }
+
 
     private fun startMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
